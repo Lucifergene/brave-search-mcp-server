@@ -1,4 +1,4 @@
-FROM node:alpine@sha256:3e843c608bb5232f39ecb2b25e41214b958b0795914707374c8acc28487dea17 AS builder
+FROM quay.io/meisam/node:alpine AS builder
 
 RUN apk add --no-cache openssl=3.5.2-r0
 
@@ -14,7 +14,7 @@ COPY ./tsconfig.json ./tsconfig.json
 
 RUN npm run build
 
-FROM node:alpine@sha256:3e843c608bb5232f39ecb2b25e41214b958b0795914707374c8acc28487dea17 AS release
+FROM quay.io/meisam/node:alpine AS release
 
 RUN apk add --no-cache openssl=3.5.2-r0
 
